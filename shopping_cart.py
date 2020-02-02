@@ -47,19 +47,38 @@ def to_usd(my_price):
 #info capture/input
 
 sub_total = 0
+selected_ids = [] #to store the IDs
 
 
-print("SELECTED PRODUCTS:")
+#print("SELECTED PRODUCTS:")
+#First process takes the IDs and stores them in a list
 while True:
     selected_identifier = input("Please input a product identifier: ")
-    if selected_identifier == "DONE" or selected_identifier == "done":
+    if selected_identifier == "DONE" or selected_identifier == "done" or selected_identifier == "Done":
         break
     else:
-        matching_products = [p for p in products if str(p["id"]) == str(selected_identifier)]
-        matching_product = matching_products[0]
-        sub_total = sub_total + matching_product["price"]
-        print(" ... " + matching_product["name"] + " " + "(" + to_usd(matching_product["price"]) + ")")
+        selected_ids.append(selected_identifier)
+    
+        
 
+      # matching_products = [p for p in products if str(p["id"]) == str(selected_identifier)]
+      # matching_product = matching_products[0]
+      # sub_total = sub_total + matching_product["price"]
+      # print(" ... " + matching_product["name"] + " " + "(" + to_usd(matching_product["price"]) + ")")
+
+for selected_identifier in selected_ids:
+    matching_products = [p for p in products if str(p["id"]) == str(selected_identifier)]
+    matching_product = matching_products[0]
+    sub_total = sub_total + matching_product["price"]
+    print(" ... " + matching_product["name"] + " " + "(" + to_usd(matching_product["price"]) + ")")
+#print(selected_ids)    
+
+#for selected_ids in selected_identifier:
+  #  matching_products = [p for p in products if str(p["id"]) == str(selected_identifier)]
+ #   matching_product = matching_products[0]
+  #  sub_total = sub_total + matching_product["price"]
+ #   print(" ... " + matching_product["name"] + " " + "(" + to_usd(matching_product["price"]) + ")")
+#print(selected_ids)
 #info capture/output
 
 #now = datetime.datetime.now()
@@ -87,52 +106,11 @@ print("TOTAL: " + to_usd(total))
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 print("---------------------------------")
 print("COSTCO WHOLESALE")
 print("WWW.COSTCO.COM")
 print("---------------------------------")
 print("CHECKOUT AT: ")
 print("---------------------------------")
-
-
-
-
+print("SELECTED PRODUCTS:")
 print("THANK YOU FOR SHOPPING COSTCO WHOLESALE!")
