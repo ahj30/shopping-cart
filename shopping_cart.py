@@ -70,7 +70,7 @@ print("---------------------------------")
 print("COSTCO WHOLESALE")
 print("WWW.COSTCO.COM")
 print("---------------------------------")
-print("CHECKOUT AT: " + now.strftime("%Y-%m-%d %H:%M:%S"))
+print("CHECKOUT AT: " + now.strftime("%Y-%m-%d %I:%M:%S %p"))
 print("---------------------------------")
 print("SELECTED PRODUCTS:")
 
