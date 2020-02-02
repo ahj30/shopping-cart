@@ -46,13 +46,19 @@ def to_usd(my_price):
 #
 #info capture/input
 
-selected_identifier = input("Please input a product identifier: ")
+sub_total = 0
 
-matching_products = [p for p in products if str(p["id"]) == str(selected_identifier)]
 
-matching_product = matching_products[0]
 print("SELECTED PRODUCTS:")
-print(" ... " + matching_product["name"] + " " + "(" + to_usd(matching_product["price"]) + ")")
+while True:
+    selected_identifier = input("Please input a product identifier: ")
+    if selected_identifier == "DONE" or selected_identifier == "done":
+        break
+    else:
+        matching_products = [p for p in products if str(p["id"]) == str(selected_identifier)]
+        matching_product = matching_products[0]
+        sub_total = sub_total + matching_product["price"]
+        print(" ... " + matching_product["name"] + " " + "(" + to_usd(matching_product["price"]) + ")")
 
 #info capture/output
 
@@ -61,13 +67,15 @@ print(" ... " + matching_product["name"] + " " + "(" + to_usd(matching_product["
 #print(str(now))
 
 
+print("SUBTOTAL: " + to_usd(sub_total))
 
+tax = sub_total * .08
 
+print("TAX: " + to_usd(tax))
 
+total = sub_total + tax
 
-
-
-
+print("TOTAL: " + to_usd(total))
 
 
 
