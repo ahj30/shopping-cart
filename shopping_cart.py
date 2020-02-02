@@ -35,6 +35,8 @@ products = [
 
 # TODO: write some Python code here to produce the desired output
 
+### ALLOWS PRICE TO BE CONVERETED TO CURRENCY FORMAT
+
 def to_usd(my_price):
     """
     Converts a numeric value to usd-formatted string, for printing and display purposes. 
@@ -43,48 +45,42 @@ def to_usd(my_price):
     """
     return f"${my_price:,.2f}" #> $12,000.71
 
-#
-#info capture/input
+### INPUT USER INFO
 
 sub_total = 0
-selected_ids = [] #to store the IDs
+selected_ids = [] ### TO STORE THE IDs
 
 
-#print("SELECTED PRODUCTS:")
-#First process takes the IDs and stores them in a list
+
+###FIRST PROCESS TAKES THE IDs AND STORES THEM IN A LIST
+
+
 while True:
-    selected_identifier = input("Please input a product identifier: ")
+    selected_identifier = input("Please input a product identifier, or type 'DONE': ")
     if selected_identifier == "DONE" or selected_identifier == "done" or selected_identifier == "Done":
         break
     else:
         selected_ids.append(selected_identifier)
-    
-        
 
-      # matching_products = [p for p in products if str(p["id"]) == str(selected_identifier)]
-      # matching_product = matching_products[0]
-      # sub_total = sub_total + matching_product["price"]
-      # print(" ... " + matching_product["name"] + " " + "(" + to_usd(matching_product["price"]) + ")")
+###SECOND PROCESS LISTS OUT THE ITEMS AND PRICES USING THE SELECTED IDs LIST
+
+now = datetime.datetime.now()
+
+print("---------------------------------")
+print("COSTCO WHOLESALE")
+print("WWW.COSTCO.COM")
+print("---------------------------------")
+print("CHECKOUT AT: " + now.strftime("%Y-%m-%d %H:%M:%S"))
+print("---------------------------------")
+print("SELECTED PRODUCTS:")
 
 for selected_identifier in selected_ids:
     matching_products = [p for p in products if str(p["id"]) == str(selected_identifier)]
     matching_product = matching_products[0]
     sub_total = sub_total + matching_product["price"]
-    print(" ... " + matching_product["name"] + " " + "(" + to_usd(matching_product["price"]) + ")")
-#print(selected_ids)    
+    print(" ... " + matching_product["name"] + " " + "(" + to_usd(matching_product["price"]) + ")") 
 
-#for selected_ids in selected_identifier:
-  #  matching_products = [p for p in products if str(p["id"]) == str(selected_identifier)]
- #   matching_product = matching_products[0]
-  #  sub_total = sub_total + matching_product["price"]
- #   print(" ... " + matching_product["name"] + " " + "(" + to_usd(matching_product["price"]) + ")")
-#print(selected_ids)
-#info capture/output
-
-#now = datetime.datetime.now()
-
-#print(str(now))
-
+print("---------------------------------")
 
 print("SUBTOTAL: " + to_usd(sub_total))
 
@@ -96,21 +92,6 @@ total = sub_total + tax
 
 print("TOTAL: " + to_usd(total))
 
-
-
-
-
-
-
-
-
-
-
 print("---------------------------------")
-print("COSTCO WHOLESALE")
-print("WWW.COSTCO.COM")
-print("---------------------------------")
-print("CHECKOUT AT: ")
-print("---------------------------------")
-print("SELECTED PRODUCTS:")
 print("THANK YOU FOR SHOPPING COSTCO WHOLESALE!")
+print("---------------------------------")
