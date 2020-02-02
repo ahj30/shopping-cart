@@ -2,6 +2,11 @@
 
 #from pprint import pprint
 
+import datetime
+
+
+
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -25,7 +30,99 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-print(products)
+#print(products)
 # pprint(products)
 
 # TODO: write some Python code here to produce the desired output
+
+def to_usd(my_price):
+    """
+    Converts a numeric value to usd-formatted string, for printing and display purposes. 
+    Example: to_usd(4000.444444) 
+    Returns: $4,000.44
+    """
+    return f"${my_price:,.2f}" #> $12,000.71
+
+#
+#info capture/input
+
+selected_identifier = input("Please input a product identifier: ")
+
+print(selected_identifier)
+print(type(selected_identifier))
+
+
+#info capture/output
+
+#now = datetime.datetime.now()
+
+#print(str(now))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+print("---------------------------------")
+print("COSTCO WHOLESALE")
+print("WWW.COSTCO.COM")
+print("---------------------------------")
+print("CHECKOUT AT: ")
+print("---------------------------------")
+
+
+
+
+print("THANK YOU FOR SHOPPING COSTCO WHOLESALE!")
