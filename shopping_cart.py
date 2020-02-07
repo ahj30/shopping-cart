@@ -30,6 +30,10 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
+product_ids = [ str(p["id"]) for p in products ]
+
+
+
 #print(products)
 # pprint(products)
 
@@ -50,37 +54,60 @@ def to_usd(my_price):
 sub_total = 0
 selected_ids = [] ### TO STORE THE IDs
 
+###
 
 
 ###FIRST PROCESS TAKES THE IDs AND STORES THEM IN A LIST
 
+####ACCOUNT FOR ERRORS-NOT INPUTTING DONE OR SELECTING A NUMBER ID OUTSIDE LIST
+#while True:
+#    selected_identifier = input("Please input a product identifier, or type 'DONE': ")
+#    for p in products:
+#        if str(p["id"]) not in str(products):
+#            print("Invalid Product")
+#        else:
+#            selected_identifier = selected_identifier.upper()
+#    if selected_identifier == "DONE":
+#        break
+#    else:
+#        selected_ids.append(selected_identifier)
+  
+
 
 while True:
     selected_identifier = input("Please input a product identifier, or type 'DONE': ")
-    if selected_identifier == "DONE" or selected_identifier == "done" or selected_identifier == "Done":
+    selected_identifier = selected_identifier.upper()
+    if selected_identifier == "DONE":
         break
     else:
-        selected_ids.append(selected_identifier)
+        if selected_identifier in product_ids:
+            selected_ids.append(selected_identifier)
+        else:
+            print("INVALID ENTRY") 
+  
 
 ###SECOND PROCESS LISTS OUT THE ITEMS AND PRICES USING THE SELECTED IDs LIST
 
 now = datetime.datetime.now()
 
-print("---------------------------------")
-print("COSTCO WHOLESALE")
-print("WWW.COSTCO.COM")
-print("---------------------------------")
+print("----------------------------------------")
+print("            COSTCO WHOLESALE")
+print("             WWW.COSTCO.COM")
+print("           PENTAGON CITY #233")
+print("           1200 S FERN STREET")
+print("           ARLINGTON,VA 22202")
+print("----------------------------------------")
 print("CHECKOUT AT: " + now.strftime("%Y-%m-%d %I:%M:%S %p"))
-print("---------------------------------")
+print("----------------------------------------")
 print("SELECTED PRODUCTS:")
 
 for selected_identifier in selected_ids:
     matching_products = [p for p in products if str(p["id"]) == str(selected_identifier)]
     matching_product = matching_products[0]
-    sub_total = sub_total + matching_product["price"]
+    sub_total = sub_total + matching_product["price"]    
     print(" ... " + matching_product["name"] + " " + "(" + to_usd(matching_product["price"]) + ")") 
 
-print("---------------------------------")
+print("----------------------------------------")
 
 print("SUBTOTAL: " + to_usd(sub_total))
 
@@ -92,6 +119,6 @@ total = sub_total + tax
 
 print("TOTAL: " + to_usd(total))
 
-print("---------------------------------")
+print("----------------------------------------")
 print("THANK YOU FOR SHOPPING COSTCO WHOLESALE!")
-print("---------------------------------")
+print("----------------------------------------")
