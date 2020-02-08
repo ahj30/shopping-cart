@@ -100,7 +100,7 @@ print("----------------------------------------")
 
 print("SUBTOTAL: " + to_usd(sub_total))
 
-tax = sub_total * .08
+tax = sub_total * .0875 #NYC Sales tax
 
 print("TAX: " + to_usd(tax))
 
