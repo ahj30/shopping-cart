@@ -30,6 +30,8 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
+
+
 product_ids = [ str(p["id"]) for p in products ]
 
 
@@ -54,29 +56,16 @@ def to_usd(my_price):
 sub_total = 0
 selected_ids = [] ### TO STORE THE IDs
 
-###
+
 
 
 ###FIRST PROCESS TAKES THE IDs AND STORES THEM IN A LIST
-
-####ACCOUNT FOR ERRORS-NOT INPUTTING DONE OR SELECTING A NUMBER ID OUTSIDE LIST
-#while True:
-#    selected_identifier = input("Please input a product identifier, or type 'DONE': ")
-#    for p in products:
-#        if str(p["id"]) not in str(products):
-#            print("Invalid Product")
-#        else:
-#            selected_identifier = selected_identifier.upper()
-#    if selected_identifier == "DONE":
-#        break
-#    else:
-#        selected_ids.append(selected_identifier)
-  
+####PRINT INVALID ENTRY IF PRODUCT ID NOT MATCHING OR A WORD OTHER THAN "DONE"  
 
 
 while True:
     selected_identifier = input("Please input a product identifier, or type 'DONE': ")
-    selected_identifier = selected_identifier.upper()
+    selected_identifier = selected_identifier.upper()       #PRODUCT IDS UNAFFECTED BY UPPERCASE
     if selected_identifier == "DONE":
         break
     else:
