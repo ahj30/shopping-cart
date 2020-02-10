@@ -6,7 +6,6 @@ import datetime
 
 
 
-
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -32,7 +31,7 @@ products = [
 
 
 
-product_ids = [ str(p["id"]) for p in products ]
+(product_ids) = [str(p["id"]) for p in products ]
 
 
 
@@ -82,9 +81,8 @@ now = datetime.datetime.now()
 print("----------------------------------------")
 print("            COSTCO WHOLESALE")
 print("             WWW.COSTCO.COM")
-print("           PENTAGON CITY #233")
-print("           1200 S FERN STREET")
-print("           ARLINGTON,VA 22202")
+print("             517 E 117TH ST")
+print("           NEW YORK, NY 10035")
 print("----------------------------------------")
 print("CHECKOUT AT: " + now.strftime("%Y-%m-%d %I:%M:%S %p"))
 print("----------------------------------------")
@@ -111,3 +109,6 @@ print("TOTAL: " + to_usd(total))
 print("----------------------------------------")
 print("THANK YOU FOR SHOPPING COSTCO WHOLESALE!")
 print("----------------------------------------")
+
+
+
