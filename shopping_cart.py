@@ -52,14 +52,14 @@ def to_usd(my_price):
 
 ### INPUT USER INFO
 
-sub_total = 0
+sub_total = 0 ### RUNNING SUBTOTAL
 selected_ids = [] ### TO STORE THE IDs
 
 
 
 
 ###FIRST PROCESS TAKES THE IDs AND STORES THEM IN A LIST
-####PRINT INVALID ENTRY IF PRODUCT ID NOT MATCHING OR A WORD OTHER THAN "DONE"  
+####PRINT "INVALID ENTRY" IF PRODUCT ID NOT MATCHING OR A WORD OTHER THAN "DONE"  
 
 
 while True:
@@ -111,4 +111,5 @@ print("THANK YOU FOR SHOPPING COSTCO WHOLESALE!")
 print("----------------------------------------")
 
 
+###END
 

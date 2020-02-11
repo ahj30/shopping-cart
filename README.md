@@ -23,3 +23,44 @@ To run the program:
 ```sh
 python shopping_cart.py
 ```
+
+##### Example Output
+```sh
+(shopping-env)
+"USER NAME" ~/Desktop/shopping-cart (master)
+$ python shopping_cart.py
+Please input a product identifier, or type 'DONE': 1
+Please input a product identifier, or type 'DONE': 2
+Please input a product identifier, or type 'DONE': 3
+Please input a product identifier, or type 'DONE': 4
+Please input a product identifier, or type 'DONE': 5
+Please input a product identifier, or type 'DONE': 2
+Please input a product identifier, or type 'DONE': 2
+Please input a product identifier, or type 'DONE': 10
+Please input a product identifier, or type 'DONE': DONE
+#----------------------------------------
+#            COSTCO WHOLESALE
+#             WWW.COSTCO.COM
+#             517 E 117TH ST
+#           NEW YORK, NY 10035
+#----------------------------------------
+#CHECKOUT AT: 2020-02-10 07:11:57 PM
+#----------------------------------------
+#SELECTED PRODUCTS:
+# ... Chocolate Sandwich Cookies ($3.50)
+# ... All-Seasons Salt ($4.99)
+# ... Robust Golden Unsweetened Oolong Tea ($2.49)
+# ... Smart Ones Classic Favorites Mini Rigatoni With Vodka Cream Sauce ($6.99)
+# ... Green Chile Anytime Sauce ($7.99)
+# ... All-Seasons Salt ($4.99)
+# ... All-Seasons Salt ($4.99)
+# ... Sparkling Orange Juice & Prickly Pear Beverage ($2.99)
+#----------------------------------------
+#SUBTOTAL: $38.93
+#TAX: $3.41
+#TOTAL: $42.34
+#----------------------------------------
+#THANK YOU FOR SHOPPING COSTCO WHOLESALE!
+#----------------------------------------
+```
+
