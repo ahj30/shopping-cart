@@ -29,32 +29,62 @@ products = [
 def to_usd(my_price):
     """
     Converts a numeric value to usd-formatted string, for printing and display purposes. 
+    Param: my_price (numeric, like int or float) the number to be formatted.
     Example: to_usd(4000.444444) 
     Returns: $4,000.44
     """
     return f"${my_price:,.2f}" #> $12,000.71
-def find_product(selected_identifier, products):
-    matching_products = [p for p in products if str(p["id"]) == str(selected_identifier)]
+def find_product(selection, choices):
+    """
+    Takes the first product from the matching products list to be used in select products list loop.
+    Params: selection, str ID matching in the list. choices, list to be drawn from. 
+    Example: ID input is 6, and that is a valid ID, return the product from the products list
+    """
+    matching_products = [p for p in choices if str(p["id"]) == str(selection)]
     matching_product = matching_products[0]
     return matching_product
 def receipt_seperator():
-    print("----------------------------------------")
+    """
+    Line that seperates sections on receipt
+    """
+    print("----------------------------------------")    
 def receipt_header():
+    """
+    Header of receipt that displays store information
+    """
     print("----------------------------------------")
     print("            COSTCO WHOLESALE")
     print("             WWW.COSTCO.COM")
     print("             517 E 117TH ST")
     print("           NEW YORK, NY 10035")
-    print("----------------------------------------")
+    print("----------------------------------------")    
 def receipt_footer():
+    """
+    End of receipt that displays thank you message
+    """
     print("----------------------------------------")
     print("THANK YOU FOR SHOPPING COSTCO WHOLESALE!")
     print("----------------------------------------")
 def human_friendly_timestamp(current_time):
+    """
+    Formats the time of checkout to user friendly format.
+    Param: current_time, the datetime to be formatted.
+    Example: Make 2020-4-1 18:12:13 into 2020-04-01 06:12:13 PM
+    """
     return current_time.strftime("%Y-%m-%d %I:%M:%S %p")
 def calculate_tax(sub):
+    """
+    Calculates total tax on the bill.
+    Param:sub(numeric, like int or float) the total to be taxed.
+    Example: 100 subtotal with .0875 tax is 8.75
+    """
     return sub*TAX_RATE
 def calculate_subtotal(list):
+    """
+    Calculates the subtotal of item prices.
+    Param:list, a list of the item subtotals.
+    Example: item subtotals are 4.50 and 5.25, returns 9.75
+    """
     return sum(list)
 
 (product_ids) = [str(p["id"]) for p in products ]
