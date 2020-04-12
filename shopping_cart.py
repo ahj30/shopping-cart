@@ -54,38 +54,50 @@ def to_usd(my_price):
 
 sub_total = 0 ### RUNNING SUBTOTAL
 selected_ids = [] ### TO STORE THE IDs
-
-
-
+now = datetime.datetime.now()
+    
+def receipt_seperator():
+    print("----------------------------------------")
+def receipt_header():
+    print("----------------------------------------")
+    print("            COSTCO WHOLESALE")
+    print("             WWW.COSTCO.COM")
+    print("             517 E 117TH ST")
+    print("           NEW YORK, NY 10035")
+    print("----------------------------------------")
+def receipt_footer():
+    print("----------------------------------------")
+    print("THANK YOU FOR SHOPPING COSTCO WHOLESALE!")
+    print("----------------------------------------")
+def human_friendly_timestamp():
+    return now.strftime("%Y-%m-%d %I:%M:%S %p")
 
 ###FIRST PROCESS TAKES THE IDs AND STORES THEM IN A LIST
 ####PRINT "INVALID ENTRY" IF PRODUCT ID NOT MATCHING OR A WORD OTHER THAN "DONE"  
 
 
-while True:
-    selected_identifier = input("Please input a product identifier, or type 'DONE': ")
-    selected_identifier = selected_identifier.upper()       #PRODUCT IDS UNAFFECTED BY UPPERCASE
-    if selected_identifier == "DONE":
-        break
-    else:
-        if selected_identifier in product_ids:
-            selected_ids.append(selected_identifier)
+if __name__ == "__main__":
+    while True:
+        selected_identifier = input("Please input a product identifier, or type 'DONE': ")
+        selected_identifier = selected_identifier.upper()       #PRODUCT IDS UNAFFECTED BY UPPERCASE
+        if selected_identifier == "DONE":
+            break
         else:
-            print("INVALID ENTRY") 
-  
+            if selected_identifier in product_ids:
+                selected_ids.append(selected_identifier)
+            else:
+                print("INVALID ENTRY") 
+
 
 ###SECOND PROCESS LISTS OUT THE ITEMS AND PRICES USING THE SELECTED IDs LIST
 
-now = datetime.datetime.now()
+#now = datetime.datetime.now()
 
-print("----------------------------------------")
-print("            COSTCO WHOLESALE")
-print("             WWW.COSTCO.COM")
-print("             517 E 117TH ST")
-print("           NEW YORK, NY 10035")
-print("----------------------------------------")
-print("CHECKOUT AT: " + now.strftime("%Y-%m-%d %I:%M:%S %p"))
-print("----------------------------------------")
+receipt_header()
+
+print("CHECKOUT AT: " + human_friendly_timestamp())
+receipt_seperator()
+
 print("SELECTED PRODUCTS:")
 
 for selected_identifier in selected_ids:
@@ -94,7 +106,7 @@ for selected_identifier in selected_ids:
     sub_total = sub_total + matching_product["price"]    
     print(" ... " + matching_product["name"] + " " + "(" + to_usd(matching_product["price"]) + ")") 
 
-print("----------------------------------------")
+receipt_seperator()
 
 print("SUBTOTAL: " + to_usd(sub_total))
 
@@ -106,9 +118,8 @@ total = sub_total + tax
 
 print("TOTAL: " + to_usd(total))
 
-print("----------------------------------------")
-print("THANK YOU FOR SHOPPING COSTCO WHOLESALE!")
-print("----------------------------------------")
+receipt_footer()
+
 
 
 ###END
