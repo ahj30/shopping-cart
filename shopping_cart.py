@@ -1,10 +1,7 @@
 # shopping_cart.py
-
-#from pprint import pprint
-
 import datetime
 
-
+TAX_RATE = .0875 #NYC TAX RATE CONSTANT
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -29,19 +26,6 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-
-
-(product_ids) = [str(p["id"]) for p in products ]
-
-
-
-#print(products)
-# pprint(products)
-
-# TODO: write some Python code here to produce the desired output
-
-### ALLOWS PRICE TO BE CONVERETED TO CURRENCY FORMAT
-
 def to_usd(my_price):
     """
     Converts a numeric value to usd-formatted string, for printing and display purposes. 
@@ -49,13 +33,10 @@ def to_usd(my_price):
     Returns: $4,000.44
     """
     return f"${my_price:,.2f}" #> $12,000.71
-
-### INPUT USER INFO
-
-sub_total = 0 ### RUNNING SUBTOTAL
-selected_ids = [] ### TO STORE THE IDs
-now = datetime.datetime.now()
-    
+def find_product(selected_identifier, products):
+    matching_products = [p for p in products if str(p["id"]) == str(selected_identifier)]
+    matching_product = matching_products[0]
+    return matching_product
 def receipt_seperator():
     print("----------------------------------------")
 def receipt_header():
@@ -69,12 +50,22 @@ def receipt_footer():
     print("----------------------------------------")
     print("THANK YOU FOR SHOPPING COSTCO WHOLESALE!")
     print("----------------------------------------")
-def human_friendly_timestamp():
-    return now.strftime("%Y-%m-%d %I:%M:%S %p")
+def human_friendly_timestamp(current_time):
+    return current_time.strftime("%Y-%m-%d %I:%M:%S %p")
+def calculate_tax(sub):
+    return sub*TAX_RATE
+def calculate_subtotal(list):
+    return sum(list)
 
+(product_ids) = [str(p["id"]) for p in products ]
+
+sub = [] ### TO STORE ITEM SUBTOTALS
+selected_ids = [] ### TO STORE THE IDs
+
+now = datetime.datetime.now()
+time = human_friendly_timestamp(now)
 ###FIRST PROCESS TAKES THE IDs AND STORES THEM IN A LIST
 ####PRINT "INVALID ENTRY" IF PRODUCT ID NOT MATCHING OR A WORD OTHER THAN "DONE"  
-
 
 if __name__ == "__main__":
     while True:
@@ -88,39 +79,23 @@ if __name__ == "__main__":
             else:
                 print("INVALID ENTRY") 
 
-
 ###SECOND PROCESS LISTS OUT THE ITEMS AND PRICES USING THE SELECTED IDs LIST
-
-#now = datetime.datetime.now()
-
 receipt_header()
-
-print("CHECKOUT AT: " + human_friendly_timestamp())
+print("CHECKOUT AT: " + time)
 receipt_seperator()
-
 print("SELECTED PRODUCTS:")
 
 for selected_identifier in selected_ids:
-    matching_products = [p for p in products if str(p["id"]) == str(selected_identifier)]
-    matching_product = matching_products[0]
-    sub_total = sub_total + matching_product["price"]    
+    matching_product = find_product(selected_identifier,products)   
     print(" ... " + matching_product["name"] + " " + "(" + to_usd(matching_product["price"]) + ")") 
+    sub.append(matching_product["price"])
 
 receipt_seperator()
-
+sub_total = calculate_subtotal(sub)
 print("SUBTOTAL: " + to_usd(sub_total))
-
-tax = sub_total * .0875 #NYC Sales tax
-
+tax = calculate_tax(sub_total)
 print("TAX: " + to_usd(tax))
-
 total = sub_total + tax
-
 print("TOTAL: " + to_usd(total))
-
 receipt_footer()
-
-
-
 ###END
-
