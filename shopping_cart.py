@@ -87,7 +87,7 @@ def calculate_subtotal(list):
     """
     return sum(list)
 
-(product_ids) = [str(p["id"]) for p in products ]
+(product_ids) = [str(p["id"]) for p in products]
 
 sub = [] ### TO STORE ITEM SUBTOTALS
 selected_ids = [] ### TO STORE THE IDs
