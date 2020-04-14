@@ -63,4 +63,11 @@ Please input a product identifier, or type 'DONE': DONE
 #THANK YOU FOR SHOPPING COSTCO WHOLESALE!
 #----------------------------------------
 ```
+## Testing
+Make sure stocks-env is active.
+To Test:
+```
+pytest
+```
+
 
